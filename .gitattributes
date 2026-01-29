@@ -1,0 +1,16 @@
+# Normalize line endings to LF in the repository (cross-platform consistency).
+# This prevents "LF will be replaced by CRLF" warnings on Windows.
+* text=auto eol=lf
+
+# Windows scripts keep CRLF if needed.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files: do not modify line endings.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.db binary
+*.sqlite binary
