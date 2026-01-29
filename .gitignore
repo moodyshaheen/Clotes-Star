@@ -30,6 +30,11 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# database (local SQLite)
+prisma/*.db
+prisma/*.sqlite
+*.db
+
 # env files (can opt-in for committing if needed)
 .env*
 
