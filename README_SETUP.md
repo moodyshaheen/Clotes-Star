@@ -72,10 +72,10 @@
 
 ## Environment Variables
 
-Create a `.env` file:
+Create a `.env` file with a **PostgreSQL** URL (from Neon or Vercel Postgres — see **DEPLOYMENT.md**):
 
 ```
-DATABASE_URL="file:./dev.db"
+DATABASE_URL="postgresql://USER:PASSWORD@HOST/DATABASE?sslmode=require"
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="your-secret-key-change-this-in-production"
 ```
@@ -84,7 +84,7 @@ NEXTAUTH_SECRET="your-secret-key-change-this-in-production"
 
 - [ ] Change NEXTAUTH_SECRET
 - [ ] Change admin password
-- [ ] Use PostgreSQL instead of SQLite
+- [ ] Set DATABASE_URL (PostgreSQL) on Vercel — see **DEPLOYMENT.md**
 - [ ] Add environment variables to production
 - [ ] Enable HTTPS
 - [ ] Add error logging

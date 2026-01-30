@@ -28,7 +28,7 @@ A full-stack e-commerce web application built with **Next.js 16**, featuring a m
 
 ### Technical
 - **API routes** — REST-style endpoints for auth, register, cart, orders, products, users, messages
-- **Database** — Prisma ORM with SQLite (dev); schema for Users, Products, CartItems, Orders, OrderItems, Messages
+- **Database** — Prisma ORM with PostgreSQL; schema for Users, Products, CartItems, Orders, OrderItems, Messages
 - **Validation** — Zod for request validation; bcrypt for password hashing
 
 ---
@@ -40,7 +40,7 @@ A full-stack e-commerce web application built with **Next.js 16**, featuring a m
 | Framework    | Next.js 16 (App Router)       |
 | UI           | React 19, Tailwind CSS       |
 | Auth         | NextAuth.js 4 (Credentials)  |
-| Database     | Prisma + SQLite              |
+| Database     | Prisma + PostgreSQL          |
 | Validation   | Zod                           |
 | Icons        | react-icons                   |
 
@@ -68,15 +68,16 @@ npm install
 Create a `.env` file in the project root:
 
 ```env
-# Database (SQLite)
-DATABASE_URL="file:./dev.db"
+# Database (PostgreSQL — مطلوب للتطوير والنشر على Vercel)
+# للتطوير المحلي أو النشر استخدم رابط من Neon أو Vercel Postgres (انظر DEPLOYMENT.md)
+DATABASE_URL="postgresql://USER:PASSWORD@HOST/DATABASE?sslmode=require"
 
 # NextAuth
 NEXTAUTH_URL="http://localhost:3000"
 NEXTAUTH_SECRET="your-secret-key-change-in-production"
 ```
 
-For production, set a strong `NEXTAUTH_SECRET` and use a production database (e.g. PostgreSQL).
+For production on Vercel, set `DATABASE_URL` (PostgreSQL from Neon or Vercel Postgres), `NEXTAUTH_SECRET`, and `NEXTAUTH_URL`. See **DEPLOYMENT.md** for step-by-step instructions.
 
 ### 3. Database setup
 
@@ -178,7 +179,7 @@ clotes-star/
 ## Production Checklist
 
 - [ ] Set a strong `NEXTAUTH_SECRET`
-- [ ] Use PostgreSQL (or another DB) and update `DATABASE_URL`
+- [ ] Set `DATABASE_URL` to a PostgreSQL URL (Neon or Vercel Postgres). See **DEPLOYMENT.md**
 - [ ] Change default admin password
 - [ ] Set `NEXTAUTH_URL` to your production URL
 - [ ] Enable HTTPS

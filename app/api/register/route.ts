@@ -47,10 +47,13 @@ export async function POST(request: Request) {
         { status: 400 }
       )
     }
+    const isDev = process.env.NODE_ENV === 'development'
     const message =
-      process.env.NODE_ENV === 'development' && error instanceof Error
+      isDev && error instanceof Error
         ? error.message
-        : 'حدث خطأ. تأكد من تشغيل قاعدة البيانات (npm run db:push ثم npm run db:generate).'
+        : process.env.VERCEL
+          ? 'تعذر الاتصال بقاعدة البيانات. تأكد من إضافة DATABASE_URL (PostgreSQL) في إعدادات المشروع على Vercel وتشغيل db:push على قاعدة الإنتاج.'
+          : 'حدث خطأ. تأكد من تشغيل قاعدة البيانات (npm run db:push ثم npm run db:generate).'
     return NextResponse.json(
       { error: message },
       { status: 500 }
