@@ -60,6 +60,7 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: '/login',
+    error: '/login', // عند حدوث خطأ في تسجيل الدخول يوجّه المستخدم لصفحة اللوجن
   },
   session: {
     strategy: 'jwt',
